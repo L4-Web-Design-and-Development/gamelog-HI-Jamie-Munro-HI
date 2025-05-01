@@ -33,6 +33,7 @@ export default function App() {
                 </Link>
               </div>
               <div className="flex gap-8">
+                <Link to="/add-game">Add Game</Link>
                 <Link to="/games">Games</Link>
                 <Link to="/about">About</Link>
                 <Link to="/blog">Blog</Link>
