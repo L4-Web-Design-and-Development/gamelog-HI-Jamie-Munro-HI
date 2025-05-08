@@ -2,16 +2,22 @@ interface GameCardProps {
   title: string;
   releaseDate: string;
   genre: string;
+  imageUrl: string;
 }
-export default function GameCard({ title, releaseDate, genre }: GameCardProps) {
+export default function GameCard({
+  title,
+  releaseDate,
+  genre,
+  imageUrl,
+}: GameCardProps) {
   const formattedDate = releaseDate.substring(0, 10);
 
   return (
     <div className="py-16 flex flex-col gap-4">
       <div className="relative h-48 overflow-hidden">
         <img
-          src="https://cdn1.epicgames.com/offer/14ee004dadc142faaaece5a6270fb628/EGS_TheWitcher3WildHuntCompleteEdition_CDPROJEKTRED_S1_2560x1440-82eb5cf8f725e329d3194920c0c0b64f"
-          alt="Game Cover"
+          src={imageUrl}
+          alt={`${title} cover`}
           className="absolute inset-8 w-full h-full object-cover rounded-xl"
         />
       </div>

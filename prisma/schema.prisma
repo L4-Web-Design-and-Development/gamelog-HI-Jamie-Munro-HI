@@ -18,6 +18,7 @@ model Game {
   rating      Float
   releaseDate DateTime
   imageUrl    String?
+  
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   categoryId  String?
