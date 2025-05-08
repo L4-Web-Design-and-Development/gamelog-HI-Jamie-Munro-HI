@@ -1,9 +1,10 @@
 interface GameCardProps {
   title: string;
   releaseDate: string;
+  genre: string;
 }
-export default function GameCard(props: GameCardProps) {
-  const formattedDate = props.releaseDate.slice(0 / 10);
+export default function GameCard({ title, releaseDate, genre }: GameCardProps) {
+  const formattedDate = releaseDate.substring(0, 10);
 
   return (
     <div className="py-16 flex flex-col gap-4">
@@ -17,10 +18,9 @@ export default function GameCard(props: GameCardProps) {
 
       <div className="flex justify-between">
         <div className="flex flex-col justify-between w-2/3">
-          <h3 className="font-bold text-2xl text-slate-300">{props.title}</h3>
+          <h3 className="font-bold text-2xl text-slate-300">{title}</h3>
           <p className="text-cyan-300 uppercase text-sm font-semibold">
-            {" "}
-            Genre{" "}
+            {genre}
           </p>
           <p className="text-slate-200/60 text-sm font-semibold">
             {formattedDate}

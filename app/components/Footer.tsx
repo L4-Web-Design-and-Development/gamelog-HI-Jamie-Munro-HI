@@ -1,3 +1,3 @@
 export default function Footer() {
-  return <div>footer</div>;
+  return <div className="flex items-end justify-center flex-wrap">footer</div>;
 }
