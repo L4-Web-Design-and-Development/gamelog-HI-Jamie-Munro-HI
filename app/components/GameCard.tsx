@@ -9,18 +9,24 @@ export default function GameCard(props: GameCardProps) {
     <div className="py-16 flex flex-col gap-4">
       <div className="relative h-48 overflow-hidden">
         <img
-          src=""
+          src="https://cdn1.epicgames.com/offer/14ee004dadc142faaaece5a6270fb628/EGS_TheWitcher3WildHuntCompleteEdition_CDPROJEKTRED_S1_2560x1440-82eb5cf8f725e329d3194920c0c0b64f"
           alt="Game Cover"
           className="absolute inset-8 w-full h-full object-cover rounded-xl"
         />
       </div>
-      <div className="flex justify-between">
-        <div className="flex flex-col justify-between w-2/3"></div>
-        <h3 className="font-bold text-2xl text-slate-300">{props.title}</h3>
-        <div>Genre</div>
-        <div className="container mx-auto flex gap-6 flex-col items-end p-6">
-          <div> {formattedDate} </div>
 
+      <div className="flex justify-between">
+        <div className="flex flex-col justify-between w-2/3">
+          <h3 className="font-bold text-2xl text-slate-300">{props.title}</h3>
+          <p className="text-cyan-300 uppercase text-sm font-semibold">
+            {" "}
+            Genre{" "}
+          </p>
+          <p className="text-slate-200/60 text-sm font-semibold">
+            {formattedDate}
+          </p>
+        </div>
+        <div className="flex flex-col gap-7 w-1/3">
           <button className="border-2 border-cyan-300 text-cyan-300 p-2 rounded-md">
             Edit
           </button>
