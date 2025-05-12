@@ -1,6 +1,6 @@
 import { json } from "@remix-run/node";
 import type { ActionFunctionArgs } from "@remix-run/node";
-import { uploadImage } from "~/utils/cloudinary.server.ts";
+import { uploadImage } from "~/utils/cloudinary.server";
 
 export async function action({ request }: ActionFunctionArgs) {
   if (request.method !== "POST") {
