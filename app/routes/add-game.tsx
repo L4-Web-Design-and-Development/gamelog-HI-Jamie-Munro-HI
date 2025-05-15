@@ -57,7 +57,7 @@ export default function AddGame() {
       className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 py-12"
       style={{ backgroundImage: `url(${GameImage})` }}
     >
-      <div className="w-full max-w-5xl bg-white/400 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-2xl text-white">
+      <div className="w-full max-w-5xl bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-2xl text-white">
         <h1 className="text-5xl font-bold mb-10 text-center">
           Add A <span className="text-cyan-400">Game</span>
         </h1>
@@ -67,7 +67,6 @@ export default function AddGame() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
-              {/* Title */}
               <div>
                 <label htmlFor="title" className="block mb-2 text-slate-300">
                   Game Title
@@ -82,7 +81,6 @@ export default function AddGame() {
                 />
               </div>
 
-              {/* Price */}
               <div>
                 <label htmlFor="price" className="block mb-2 text-slate-300">
                   Game Price
@@ -98,7 +96,6 @@ export default function AddGame() {
                 />
               </div>
 
-              {/* Genre */}
               <div>
                 <label
                   htmlFor="categoryId"
@@ -121,13 +118,12 @@ export default function AddGame() {
                 </select>
               </div>
 
-              {/* Release Date */}
               <div>
                 <label
                   htmlFor="releaseDate"
                   className="block mb-2 text-slate-300"
                 >
-                  Date Started
+                  Date Released
                 </label>
                 <input
                   type="date"
@@ -138,7 +134,6 @@ export default function AddGame() {
                 />
               </div>
 
-              {/* Rating */}
               <div>
                 <label htmlFor="rating" className="block mb-2 text-slate-300">
                   Game Rating
@@ -157,7 +152,6 @@ export default function AddGame() {
             </div>
 
             <div className="space-y-6">
-              {/* Description */}
               <div>
                 <label
                   htmlFor="description"
@@ -174,7 +168,6 @@ export default function AddGame() {
                 ></textarea>
               </div>
 
-              {/* ImageUploader */}
               <div>
                 <label
                   htmlFor="image-upload"
