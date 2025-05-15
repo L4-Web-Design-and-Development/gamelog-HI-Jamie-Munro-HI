@@ -68,7 +68,7 @@ export default function AddGame() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div>
-                <label htmlFor="title" className="block mb-2 text-slate-300">
+                <label htmlFor="title" className="block mb-2 text-gray-300">
                   Game Title
                 </label>
                 <input
@@ -77,12 +77,12 @@ export default function AddGame() {
                   name="title"
                   required
                   placeholder="For example: Cuphead, Uncharted"
-                  className="w-full p-3 rounded-md bg-white/10 text-white placeholder-slate-400 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  className="w-full p-3 rounded-md bg-white/10 text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
               </div>
 
               <div>
-                <label htmlFor="price" className="block mb-2 text-slate-300">
+                <label htmlFor="price" className="block mb-2 text-gray-300">
                   Game Price
                 </label>
                 <input
@@ -99,7 +99,7 @@ export default function AddGame() {
               <div>
                 <label
                   htmlFor="categoryId"
-                  className="block mb-2 text-slate-300"
+                  className="block mb-2 text-gray-300"
                 >
                   Game Genre
                 </label>
@@ -107,7 +107,7 @@ export default function AddGame() {
                   id="categoryId"
                   name="categoryId"
                   required
-                  className="w-full p-3 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  className="w-full p-3 rounded-md bg-white/10 text-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 >
                   <option value="">Select a genre</option>
                   {categories.map((category) => (
@@ -121,7 +121,7 @@ export default function AddGame() {
               <div>
                 <label
                   htmlFor="releaseDate"
-                  className="block mb-2 text-slate-300"
+                  className="block mb-2 text-gray-300"
                 >
                   Date Released
                 </label>
@@ -135,7 +135,7 @@ export default function AddGame() {
               </div>
 
               <div>
-                <label htmlFor="rating" className="block mb-2 text-slate-300">
+                <label htmlFor="rating" className="block mb-2 text-gray-300">
                   Game Rating
                 </label>
                 <input
@@ -155,7 +155,7 @@ export default function AddGame() {
               <div>
                 <label
                   htmlFor="description"
-                  className="block mb-2 text-slate-300"
+                  className="block mb-2 text-gray-300"
                 >
                   Description Of Game
                 </label>
@@ -171,7 +171,7 @@ export default function AddGame() {
               <div>
                 <label
                   htmlFor="image-upload"
-                  className="block mb-2 text-slate-300"
+                  className="block mb-2 text-gray-300"
                 >
                   Image From Game
                 </label>
