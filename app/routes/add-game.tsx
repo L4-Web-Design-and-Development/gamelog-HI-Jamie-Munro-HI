@@ -4,6 +4,7 @@ import { json, redirect } from "@remix-run/node";
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { PrismaClient } from "@prisma/client";
 import ImageUploader from "~/components/ImageUploader";
+import GameImage from "~/assets/png/Add-game-background.png";
 
 export async function loader() {
   const prisma = new PrismaClient();
@@ -13,7 +14,6 @@ export async function loader() {
   });
 
   prisma.$disconnect();
-
   return json({ categories });
 }
 
@@ -28,7 +28,6 @@ export async function action({ request }: ActionFunctionArgs) {
   const categoryId = formData.get("categoryId") as string;
 
   const prisma = new PrismaClient();
-
   await prisma.game.create({
     data: {
       title,
@@ -42,7 +41,6 @@ export async function action({ request }: ActionFunctionArgs) {
   });
 
   prisma.$disconnect();
-
   return redirect("/");
 }
 
@@ -55,142 +53,157 @@ export default function AddGame() {
   };
 
   return (
-    <div className="container mx-auto py-20 px-4">
-      <h1 className="font-bold text-5xl text-center mb-10">
-        Add <span className="text-cyan-400">Game</span>
-      </h1>
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 py-12"
+      style={{ backgroundImage: `url(${GameImage})` }}
+    >
+      <div className="w-full max-w-5xl bg-white/400 backdrop-blur-md p-10 rounded-3xl border border-white/10 shadow-2xl text-white">
+        <h1 className="text-5xl font-bold mb-10 text-center">
+          Add A <span className="text-cyan-400">Game</span>
+        </h1>
 
-      <div className="max-w-2xl mx-auto bg-gray-950 p-8 rounded-xl">
-        <Form method="post" className="space-y-6">
+        <Form method="post" className="space-y-8">
           <input type="hidden" name="imageUrl" value={imageUrl} />
 
-          <div>
-            <label
-              htmlFor="title"
-              className="block text-sm font-medium mb-2 text-slate-400"
-            >
-              Title
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              required
-              className="w-full p-3 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            />
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              {/* Title */}
+              <div>
+                <label htmlFor="title" className="block mb-2 text-slate-300">
+                  Game Title
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  required
+                  placeholder="For example: Cuphead, Uncharted"
+                  className="w-full p-3 rounded-md bg-white/10 text-white placeholder-slate-400 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                />
+              </div>
 
-          <div>
-            <label
-              htmlFor="description"
-              className="block text-sm font-medium mb-2 text-slate-400"
-            >
-              Description
-            </label>
-            <textarea
-              id="description"
-              name="description"
-              required
-              rows={4}
-              className="w-full p-3 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            ></textarea>
-          </div>
+              {/* Price */}
+              <div>
+                <label htmlFor="price" className="block mb-2 text-slate-300">
+                  Game Price
+                </label>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  step="0.01"
+                  min="0"
+                  required
+                  className="w-full p-3 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                />
+              </div>
 
-          <div className="mb-8">
-            <ImageUploader onImageUploaded={handleImageUploaded} />
-          </div>
+              {/* Genre */}
+              <div>
+                <label
+                  htmlFor="categoryId"
+                  className="block mb-2 text-slate-300"
+                >
+                  Game Genre
+                </label>
+                <select
+                  id="categoryId"
+                  name="categoryId"
+                  required
+                  className="w-full p-3 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                >
+                  <option value="">Select a genre</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-          {/* Additional form fields for price, rating, etc. */}
+              {/* Release Date */}
+              <div>
+                <label
+                  htmlFor="releaseDate"
+                  className="block mb-2 text-slate-300"
+                >
+                  Date Started
+                </label>
+                <input
+                  type="date"
+                  id="releaseDate"
+                  name="releaseDate"
+                  required
+                  className="w-full p-3 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                />
+              </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label
-                htmlFor="price"
-                className="block text-sm font-medium mb-2 text-slate-400"
-              >
-                Price
-              </label>
-              <input
-                type="number"
-                id="price"
-                name="price"
-                step="0.01"
-                min="0"
-                required
-                className="w-full p-3 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              />
+              {/* Rating */}
+              <div>
+                <label htmlFor="rating" className="block mb-2 text-slate-300">
+                  Game Rating
+                </label>
+                <input
+                  type="number"
+                  id="rating"
+                  name="rating"
+                  step="0.1"
+                  min="0"
+                  max="5"
+                  required
+                  className="w-full p-3 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                />
+              </div>
             </div>
 
-            <div>
-              <label
-                htmlFor="rating"
-                className="block text-sm font-medium mb-2 text-slate-400"
-              >
-                Rating
-              </label>
-              <input
-                type="number"
-                id="rating"
-                name="rating"
-                step="0.1"
-                min="0"
-                max="5"
-                required
-                className="w-full p-3 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              />
+            <div className="space-y-6">
+              {/* Description */}
+              <div>
+                <label
+                  htmlFor="description"
+                  className="block mb-2 text-slate-300"
+                >
+                  Description Of Game
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  rows={6}
+                  required
+                  className="w-full p-3 rounded-md bg-white/10 text-white placeholder-slate-400 border border-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                ></textarea>
+              </div>
+
+              {/* ImageUploader */}
+              <div>
+                <label
+                  htmlFor="image-upload"
+                  className="block mb-2 text-slate-300"
+                >
+                  Image From Game
+                </label>
+                <div className="p-3 bg-white/10 border border-white/20 rounded-md">
+                  <ImageUploader
+                    id="image-upload"
+                    onImageUploaded={handleImageUploaded}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <label
-              htmlFor="releaseDate"
-              className="block text-sm font-medium mb-2 text-slate-400"
-            >
-              Release Date
-            </label>
-            <input
-              type="date"
-              id="releaseDate"
-              name="releaseDate"
-              required
-              className="w-full p-3 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="categoryId"
-              className="block text-sm font-medium mb-2 text-slate-400"
-            >
-              Category
-            </label>
-            <select
-              id="categoryId"
-              name="categoryId"
-              required
-              className="w-full p-3 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            >
-              <option value="">Select a category</option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.title}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex justify-end gap-16">
+          <div className="flex justify-end gap-6">
             <Link
               to="/"
-              className=" text-red-300 border-2 border-red-300 py-3 px-6 rounded-md hover:bg-red-50/10 transition duration-200"
+              className="py-3 px-6 rounded-md text-white border border-white/20 bg-white/10 hover:bg-white/20 transition"
             >
-              Cancel
+              CANCEL
             </Link>
             <button
               type="submit"
-              className=" bg-cyan-600 text-white py-3 px-6 rounded-md hover:bg-cyan-500 transition duration-200"
+              className="py-3 px-6 rounded-md bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition"
             >
-              Add Game
+              SUBMIT
             </button>
           </div>
         </Form>

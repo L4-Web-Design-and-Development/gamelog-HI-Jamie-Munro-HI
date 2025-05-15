@@ -1,14 +1,13 @@
 import { useState, useRef } from "react";
 import { useFetcher } from "@remix-run/react";
 
-// Define the response type from the upload API
 interface UploadResponse {
   imageUrl?: string;
   error?: string;
 }
-
 interface ImageUploaderProps {
   onImageUploaded: (imageUrl: string) => void;
+  id?: string;
 }
 
 export default function ImageUploader({ onImageUploaded }: ImageUploaderProps) {
