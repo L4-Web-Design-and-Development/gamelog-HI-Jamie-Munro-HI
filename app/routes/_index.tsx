@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { json } from "@remix-run/node";
-import { useLoaderData, Link } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
 import GameCard from "~/components/GameCard";
 import gamelogFallback from "~/assets/svg/gamelog-logo.svg";
@@ -39,9 +39,6 @@ export default function Index() {
   return (
     <div className="container px-8 mx-auto min-h-screen">
       <Hero title={"Track Your Gaming Journey with Ease"} ctaText="Add Game" />
-      <div className="flex gap-8">
-        <Link to="/add-game">Add Game</Link>
-      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {games.map((game) => (
           <GameCard
