@@ -17,9 +17,13 @@ export default function GameCard({
   const formattedDate = releaseDate.substring(0, 10);
 
   return (
-    <div className="py-5 flex flex-col gap-4 ">
-      <div className="flex justify-center h-48 overflow-hidden w-96">
-        <img src={imageUrl} alt={`${title} cover`} />
+    <div className="flex flex-col gap-4">
+      <div className="relative flex justify-center h-48 overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={`${title} cover`}
+          className="absolute inset-0 object-cover h-full rounded-lg"
+        />
       </div>
 
       <div className="flex justify-between">
