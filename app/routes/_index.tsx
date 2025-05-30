@@ -40,7 +40,7 @@ export default function Index() {
     <div className="container px-8 mx-auto min-h-screen">
       <Hero title={"Track Your Gaming Journey with Ease"} ctaText="Add Game" />
       <div className="flex gap-8">
-        <Link to="/add-game">Add Game</Link>
+        <Link to="/add-game"></Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {games.map((game) => (
